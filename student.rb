@@ -14,4 +14,4 @@ class Student < Person
 end
 
 student1 = Student.new("6 A")
-puts student1.name
+puts student1.play_hooky()
