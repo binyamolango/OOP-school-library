@@ -18,7 +18,7 @@ class Person
   end
 end
 
-person = Person.new(14)
+person = Person.new(14, "Binyam")
 
 def can_use_services?(person)
   if person.of_age?() == true || person.parent_permission == true
@@ -28,4 +28,4 @@ def can_use_services?(person)
   end
 end
 
-puts can_use_services?(person)
+# puts can_use_services?(person)
