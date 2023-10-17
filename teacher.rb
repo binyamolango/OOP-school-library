@@ -1,10 +1,10 @@
-require "./person.rb"
+require './person'
 
 class Teacher < Person
   attr_accessor :specialization
 
   def initialize(specialization)
-    super(37, "Abiyu")
+    super(37, 'Abiyu')
     @specialization = specialization
   end
 
@@ -12,6 +12,3 @@ class Teacher < Person
     true
   end
 end
-
-teacher1 = Teacher.new("Computer Engineering")
-puts teacher1.specialization
