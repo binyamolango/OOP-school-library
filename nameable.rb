@@ -18,7 +18,7 @@ end
 
 # Concrete Decorator
 class CapitalizeDecorator < PersonDecorator
-  
+  def correct_name
+    super.upcase()
+  end
 end
-
-# Usage

@@ -28,6 +28,3 @@ def can_use_services?(person)
 
   false
 end
-
-simple_person = Person.new(25, "Binyam")
-puts "Name: #{simple_person.correct_name}"
