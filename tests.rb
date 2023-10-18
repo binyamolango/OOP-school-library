@@ -1,5 +1,5 @@
-require "./person.rb"
-require "./nameable.rb"
+require './person'
+require './nameable'
 
 person = Person.new(22, 'maximilianus')
 person.correct_name

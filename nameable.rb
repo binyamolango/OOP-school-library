@@ -8,6 +8,7 @@ end
 # Base Decorator
 class PersonDecorator < Nameable
   def initialize(nameable)
+    super()
     @nameable = nameable
   end
 
@@ -19,7 +20,7 @@ end
 # Concrete Decorator
 class CapitalizeDecorator < PersonDecorator
   def correct_name
-    super.upcase()
+    super.upcase
   end
 end
 
@@ -28,9 +29,10 @@ class TrimmerDecorator < PersonDecorator
     max_len = 10
     if super.length > max_len
       trimmed_word = super[0..max_len]
-      trimmed_word << "..."
-      return trimmed_word
-    else super
+      trimmed_word << '...'
+      trimmed_word
+    else
+      super
     end
   end
 end
