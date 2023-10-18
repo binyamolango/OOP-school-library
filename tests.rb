@@ -1,9 +1,9 @@
 require "./person.rb"
 require "./nameable.rb"
 
-simple_person = Person.new(25, "Binyamjfkdlskjdkllllllllllfjdksl")
-puts "Name: #{simple_person.correct_name}"
-upper_case = CapitalizeDecorator.new(simple_person)
-puts "Name-Upcase: #{upper_case.correct_name}"
-upper_case_truncate_word = TrimmerDecorator.new(upper_case)
-puts "Name-Upcase-Truncate: #{upper_case_truncate_word.correct_name}"
+person = Person.new(22, 'maximilianus')
+person.correct_name
+capitalized_person = CapitalizeDecorator.new(person)
+puts capitalized_person.correct_name
+capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
+puts capitalized_trimmed_person.correct_name
