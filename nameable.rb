@@ -22,3 +22,15 @@ class CapitalizeDecorator < PersonDecorator
     super.upcase()
   end
 end
+
+class TrimmerDecorator < PersonDecorator
+  def correct_name
+    max_len = 10
+    if super.length > max_len
+      trimmed_word = super[0..max_len]
+      trimmed_word << "..."
+      return trimmed_word
+    else super
+    end
+  end
+end
