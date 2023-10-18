@@ -1,4 +1,6 @@
-class Person
+require "./nameable.rb"
+
+class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id, :parent_permission
 
@@ -13,6 +15,10 @@ class Person
     return true if @age >= 18
 
     false
+  end
+
+  def correct_name
+    @name
   end
 end
 
