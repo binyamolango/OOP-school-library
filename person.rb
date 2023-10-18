@@ -1,8 +1,12 @@
-class Person
+require './nameable'
+
+# Concrete component
+class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age
@@ -14,6 +18,10 @@ class Person
 
     false
   end
+
+  def correct_name
+    @name
+  end
 end
 
 def can_use_services?(person)
@@ -21,5 +29,3 @@ def can_use_services?(person)
 
   false
 end
-
-# puts can_use_services?(person)
