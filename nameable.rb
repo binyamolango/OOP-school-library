@@ -20,7 +20,7 @@ end
 # Concrete Decorator
 class CapitalizeDecorator < PersonDecorator
   def correct_name
-    super.upcase
+    super.capitalize
   end
 end
 
