@@ -16,4 +16,9 @@ class PersonDecorator < Nameable
   end
 end
 
+# Concrete Decorator
+class CapitalizeDecorator < PersonDecorator
+  
+end
+
 # Usage
