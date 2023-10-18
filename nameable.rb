@@ -7,5 +7,7 @@ end
 
 # Base Decorator
 class PersonDecorator < Nameable
-
+  def initialize(nameable)
+    @nameable = nameable
+  end
 end
