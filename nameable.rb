@@ -26,13 +26,6 @@ end
 
 class TrimmerDecorator < PersonDecorator
   def correct_name
-    max_len = 10
-    if super.length > max_len
-      trimmed_word = super[0..max_len]
-      trimmed_word << '...'
-      trimmed_word
-    else
-      super
-    end
+    super.length > 10 ? super[0..9] : super
   end
 end
