@@ -30,14 +30,14 @@ class App
 
   def create_a_person
     print "Do you want to create a student (1) or A teacher (2)? [Input the number]: "
-    input_data = get.chomp
+    input_data = gets.chomp
     if input_data == 1
       print "Age: "
-      age = get.chomp
+      age = gets.chomp
       print "Name: "
-      name = get.chomp
+      name = gets.chomp
       print "Has parent permission? [Y/N]: "
-      parent_permission = get.chomp
+      parent_permission = gets.chomp
       parent_permission = parent_permission.upcase()
       if parent_permission == "Y"
         parent_permission = true
@@ -49,11 +49,11 @@ class App
       all_students << student
     elsif input_data == 2
       print "Age: "
-      age = get.chomp
+      age = gets.chomp
       print "Name: "
-      name = get.chomp
+      name = gets.chomp
       print "Specialization: "
-      specialization = get.chomp
+      specialization = gets.chomp
       teacher = Teacher.new(age, specialization, name)
       puts "Person created successfully"
       all_teachers << teacher
@@ -62,9 +62,9 @@ class App
 
   def create_a_book
     print "Title: "
-    title = get.chomp
+    title = gets.chomp
     print "Author: "
-    author = get.chomp
+    author = gets.chomp
     book = Book.new(title, author)
     puts "Book created Successfully"
     all_books << book
@@ -75,7 +75,7 @@ class App
     all_books.each_with_index do |book, index|
       puts "#{index + 1}) Title: \"#{book.title}\", Author: #{book.author}"
     end
-    selected_book_num = get.chomp
+    selected_book_num = gets.chomp
     book = all_books[selected_book_num]
 
     puts "Select a person from the following list by number (not id)"
@@ -86,11 +86,11 @@ class App
         puts "#{index + 1}) [Student] Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
       end
     end
-    selected_person_num = get.chomp
+    selected_person_num = gets.chomp
     person = all_person[selected_person_num]
 
     print "Date: "
-    date = get.chomp
+    date = gets.chomp
 
     rental = Rental.new(date, book, person)
     book.add_rental(rental)
@@ -100,7 +100,7 @@ class App
 
   def list_all_rental(all_rentals)
     print "Id of person: "
-    person_id = get.chomp
+    person_id = gets.chomp
 
     rentals_for_person = all_rentals.select { |rental| rental.person.id == person_id }
 
