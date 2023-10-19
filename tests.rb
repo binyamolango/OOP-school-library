@@ -1,9 +1,15 @@
-require './person'
-require './nameable'
+require "./person.rb"
+require "./classroom.rb"
+require "./student.rb"
 
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+class1 = Classroom.new
+
+student1 = Student.new(25, 1, "Binyam")
+student2 = Student.new(26, 1, "Bereket")
+
+class1.add_student(student1)
+class1.add_student(student2)
+
+class1.label.each do |student|
+  puts student.name
+end
