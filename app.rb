@@ -4,22 +4,26 @@ require './student'
 require './teacher'
 
 class App
-  attr_accessor :all_books, :all_people
+  attr_accessor :all_books, :all_students, :all_teachers
 
   def initialize
-    @all_people = []
+    @all_students = []
+    @all_teachers = []
     @all_books = []
   end
 
-  def list_all_books(book)
-    all_books.each do |single_book|
-      puts single_book.title
+  def list_all_books(all_books)
+    all_books.each do |book|
+      puts "Title: \"#{book.title}\", Author: #{book.author}"
     end
   end
 
-  def list_all_people(all_people)
-    all_people.each do |single_people|
-      puts single_people.name
+  def list_all_people(all_students, all_teachers)
+    all_students.each do |student|
+      puts "[Student] Name: #{student.name}, Id: #{student.id}, Age: #{student.age}"
+    end
+    all_teachers.each do |teacher|
+      puts "[Teacher] Name: #{teacher.name}, Id: #{teacher.id}, Age: #{teacher.age}"
     end
   end
 
@@ -41,7 +45,7 @@ class App
       end
       student = Student.new(age, classroom = 1, name, parent_permission)
       puts "Person created successfully"
-      all_people << student
+      all_students << student
     elsif input_data == 2
       print "Age: "
       age = get.chomp
@@ -51,7 +55,7 @@ class App
       specialization = get.chomp
       teacher = Teacher.new(age, specialization, name)
       puts "Person created successfully"
-      all_people << teacher
+      all_teachers << teacher
     end
   end
 
@@ -65,7 +69,13 @@ class App
     all_books << book
   end
 
-  def create_a_rental
-    
+  def create_a_rental(all_books)
+    puts "Select a book from the following list by number"
+    all_books.each do |book|
+      i = 0
+      puts "#{i}) Title: \"#{book.title}\", Author: #{book.author}"
+      i++
+    end
+    num = get.chomp
   end
 end
