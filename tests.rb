@@ -3,16 +3,16 @@ require './book'
 require './student'
 require './rental'
 
-book = Book.new("Title", "Author")
-person = Person.new("John")
-rental = Rental.new("2023-10-19", book, person)
+book = Book.new('Title', 'Author')
+person = Person.new('John')
+rental = Rental.new('2023-10-19', book, person)
 
 book.add_rental(rental)
 
-book.rentals.each do |rental|
-  puts rental.date
-  puts rental.book.title
-  puts rental.person.name
+book.rentals.each do |rental_item|
+  puts rental_item.date
+  puts rental_item.book.title
+  puts rental_item.person.name
 end
 
 # TESTS FOR ADDING STUDENT IN CLASSROOM
