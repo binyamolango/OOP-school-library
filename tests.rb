@@ -39,7 +39,6 @@ end
 
 # puts student3.classroom.inspect
 
-
 # TESTS FOR DECORATORS
 # require './person'
 # require './nameable'
