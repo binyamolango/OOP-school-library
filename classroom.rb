@@ -8,7 +8,7 @@ class Classroom
   end
 
   def add_student(student)
-    @label << student   # has-many
-    student.classroom = self  # belongs-to
+    @label << student   # this classroom has-many students
+    student.classroom = self  # many student belongs-to this classroom
   end
 end
