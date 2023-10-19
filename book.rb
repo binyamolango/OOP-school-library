@@ -9,9 +9,8 @@ class Book
     @rentals = []
   end
 
-  def add_rental(date, book, person)
-    rental = Rental.new(date, book, person)
-    @rentals << rental #has-many
-    rental.book = self #belongs-to
+  def add_rental(rental)
+    @rentals << rental
+    rental.book = self
   end
 end
