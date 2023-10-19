@@ -24,35 +24,48 @@ class App
   end
 
   def create_a_person
-    puts "A Student (1) or A Teacher (2)? "
+    print "Do you want to create a student (1) or A teacher (2)? [Input the number]: "
     input_data = get.chomp
     if input_data == 1
-      puts "Enter Student's Name: "
+      print "Age: "
+      age = get.chomp
+      print "Name: "
       name = get.chomp
-      puts "Enter Student's Age: "
-      age = get.chomp
-      puts "Enter Student's Classroom: "
-      age = get.chomp
-      student = Student.new(age, classroom, name)
+      print "Has parent permission? [Y/N]: "
+      parent_permission = get.chomp
+      parent_permission = parent_permission.upcase()
+      if parent_permission == "Y"
+        parent_permission = true
+      elsif parent_permission == "N"
+        parent_permission = false
+      end
+      student = Student.new(age, classroom = 1, name, parent_permission)
+      puts "Person created successfully"
       all_people << student
     elsif input_data == 2
-      puts "Enter Teacher's Name: "
+      print "Age: "
+      age = get.chomp
+      print "Name: "
       name = get.chomp
-      puts "Enter Teacher's Age: "
-      age = get.chomp
-      puts "Enter Teacher's Specialization: "
-      age = get.chomp
-      student = Student.new(age, specialization, name)
+      print "Specialization: "
+      specialization = get.chomp
+      teacher = Teacher.new(age, specialization, name)
+      puts "Person created successfully"
       all_people << teacher
     end
   end
 
   def create_a_book
-    puts "Enter the book title: "
+    print "Title: "
     title = get.chomp
-    puts "Enter the book author: "
+    print "Author: "
     author = get.chomp
     book = Book.new(title, author)
+    puts "Book created Successfully"
     all_books << book
+  end
+
+  def create_a_rental
+    
   end
 end
