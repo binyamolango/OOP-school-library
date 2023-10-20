@@ -2,6 +2,8 @@ require './book'
 require './student'
 require './teacher'
 require './rental'
+require './person'
+require './nameable'
 
 class App
   attr_accessor :all_books, :all_person, :all_rentals
@@ -48,23 +50,39 @@ class App
   def create_student
     print 'Age: '
     age = gets.chomp.to_i
+
     print 'Name: '
     name = gets.chomp
+
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.upcase == 'Y'
+
     student = Student.new(age, name, parent_permission: parent_permission)
-    @all_person << student
-    puts 'Person created successfully'
+
+    student.name = CapitalizeDecorator.new(TrimmerDecorator.new(student)).correct_name
+
+    if can_use_services?(student)
+      @all_person << student
+      puts 'Person created successfully'
+    else
+      puts 'Student can not use the service'
+    end
   end
 
   def create_teacher
     print 'Age: '
     age = gets.chomp.to_i
+
     print 'Name: '
     name = gets.chomp
+
     print 'Specialization: '
     specialization = gets.chomp
+
     teacher = Teacher.new(age, specialization, name)
+
+    teacher.name = CapitalizeDecorator.new(TrimmerDecorator.new(teacher)).correct_name
+
     @all_person << teacher
     puts 'Person created successfully'
   end

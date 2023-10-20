@@ -29,6 +29,7 @@ class Person < Nameable
     @rentals << rental
     rental.person = self
   end
+  
 end
 
 def can_use_services?(person)
