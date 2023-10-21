@@ -26,6 +26,7 @@ end
 
 class TrimmerDecorator < PersonDecorator
   def correct_name
-    super.length > 10 ? super[0..9] : super
+    name = super
+    name.length > 10 ? name[0..9] : name
   end
 end

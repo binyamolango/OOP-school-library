@@ -1,19 +1,19 @@
 # TESTS FOR ADD_RENTAL
-require './book'
-require './student'
-require './rental'
+# require './book'
+# require './student'
+# require './rental'
 
-book = Book.new('Title', 'Author')
-person = Person.new('John')
-rental = Rental.new('2023-10-19', book, person)
+# book = Book.new('Title', 'Author')
+# person = Person.new('John')
+# rental = Rental.new('2023-10-19', book, person)
 
-book.add_rental(rental)
+# book.add_rental(rental)
 
-book.rentals.each do |rental_item|
-  puts rental_item.date
-  puts rental_item.book.title
-  puts rental_item.person.name
-end
+# book.rentals.each do |rental_item|
+#   puts rental_item.date
+#   puts rental_item.book.title
+#   puts rental_item.person.name
+# end
 
 # TESTS FOR ADDING STUDENT IN CLASSROOM
 # require "./person.rb"
