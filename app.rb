@@ -4,6 +4,7 @@ require './teacher'
 require './rental'
 require './person'
 require './nameable'
+require './write'
 
 class App
   attr_accessor :all_books, :all_person, :all_rentals
@@ -12,6 +13,17 @@ class App
     @all_person = []
     @all_books = []
     @all_rentals = []
+  end
+
+  def person_json()
+    data = @all_person.map do |person|
+      {
+        Name: person.name,
+        ID: person.id,
+        AGE: person.age
+      }
+    end
+    write_file(data, 'person.json')
   end
 
   # list all books
@@ -63,6 +75,7 @@ class App
 
     if can_use_services?(student)
       @all_person << student
+      person_json
       puts 'Person created successfully'
     else
       puts 'Student can not use the service'
@@ -84,6 +97,7 @@ class App
     teacher.name = CapitalizeDecorator.new(TrimmerDecorator.new(teacher)).correct_name
 
     @all_person << teacher
+    person_json
     puts 'Person created successfully'
   end
 
