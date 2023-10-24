@@ -16,7 +16,7 @@ class App
     @all_rentals = []
   end
 
-  def person_json()
+  def person_json
     data = @all_person.map do |person|
       {
         Name: person.name,
@@ -30,17 +30,26 @@ class App
 
   # list all books
   def list_all_books(all_books)
+    return puts "No book found!" unless File.exist?('rentals.json')
     all_books.each do |book|
       puts "Title: \"#{book.title}\", Author: #{book.author}"
     end
   end
 
   # list all people
+<<<<<<< HEAD
   def list_all_people()
     data = read_file('person.json')
     data.each do |person|
       if person['Role'] == 'Teacher'
         puts "[Teacher] Name: #{person['Name']}, Id : #{person['Id']}, Age: #{person['Age']} "
+=======
+  def list_all_people(all_person)
+    return puts "No person found!" unless File.exist?('person.json')
+    all_person.each do |person|
+      if person.is_a?(Teacher)
+        puts "[Teacher] Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+>>>>>>> f417824ac3a7783c02b7d54f97c5d4b2818a741f
       else
         puts "[Student] Name: #{person['Name']}, Id : #{person['Id']}, Age: #{person['Age']} "
       end
@@ -160,6 +169,7 @@ class App
   end
 
   def list_all_rental(all_rentals)
+    return puts "No rental found!" unless File.exist?('rental.json')
     print 'Id of person: '
     person_id = gets.chomp.to_i
 
