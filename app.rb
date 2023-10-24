@@ -5,7 +5,6 @@ require './rental'
 require './person'
 require './nameable'
 require './write'
-require 'json'
 
 class App
   attr_accessor :all_books, :all_person, :all_rentals
@@ -16,7 +15,16 @@ class App
     @all_rentals = []
   end
 
-  # check for the existance of preserved data files and handle errors if not
+  def person_json
+    data = @all_person.map do |person|
+      {
+        Name: person.name,
+        ID: person.id,
+        AGE: person.age
+      }
+    end
+    write_file(data, 'person.json')
+  end
 
   # list all books
   def list_all_books(all_books)
@@ -69,8 +77,8 @@ class App
 
     if can_use_services?(student)
       @all_person << student
+      person_json
       puts 'Person created successfully'
-      write_file(@all_person, './person.json')
     else
       puts 'Student can not use the service'
     end
@@ -91,8 +99,8 @@ class App
     teacher.name = CapitalizeDecorator.new(TrimmerDecorator.new(teacher)).correct_name
 
     @all_person << teacher
+    person_json
     puts 'Person created successfully'
-    write_file(@all_person, './person.json')
   end
 
   # Create a book
