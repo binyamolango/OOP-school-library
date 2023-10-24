@@ -5,6 +5,7 @@ require './rental'
 require './person'
 require './nameable'
 require './write'
+require './read'
 
 class App
   attr_accessor :all_books, :all_person, :all_rentals
@@ -19,8 +20,9 @@ class App
     data = @all_person.map do |person|
       {
         Name: person.name,
-        ID: person.id,
-        AGE: person.age
+        Id: person.id,
+        Age: person.age,
+        Role: person.role
       }
     end
     write_file(data, 'person.json')
@@ -34,12 +36,13 @@ class App
   end
 
   # list all people
-  def list_all_people(all_person)
-    all_person.each do |person|
-      if person.is_a?(Teacher)
-        puts "[Teacher] Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+  def list_all_people()
+    data = read_file('person.json')
+    data.each do |person|
+      if person['Role'] == 'Teacher'
+        puts "[Teacher] Name: #{person['Name']}, Id : #{person['Id']}, Age: #{person['Age']} "
       else
-        puts "[Student] Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+        puts "[Student] Name: #{person['Name']}, Id : #{person['Id']}, Age: #{person['Age']} "
       end
     end
   end
