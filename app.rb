@@ -4,6 +4,8 @@ require './teacher'
 require './rental'
 require './person'
 require './nameable'
+require './write'
+require 'json'
 
 class App
   attr_accessor :all_books, :all_person, :all_rentals
@@ -14,8 +16,11 @@ class App
     @all_rentals = []
   end
 
+  # check for the existance of preserved data files and handle errors if not
+
   # list all books
   def list_all_books(all_books)
+    return puts "No book found!" unless File.exist?('rentals.json')
     all_books.each do |book|
       puts "Title: \"#{book.title}\", Author: #{book.author}"
     end
@@ -23,6 +28,7 @@ class App
 
   # list all people
   def list_all_people(all_person)
+    return puts "No person found!" unless File.exist?('person.json')
     all_person.each do |person|
       if person.is_a?(Teacher)
         puts "[Teacher] Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
@@ -64,6 +70,7 @@ class App
     if can_use_services?(student)
       @all_person << student
       puts 'Person created successfully'
+      write_file(@all_person, './person.json')
     else
       puts 'Student can not use the service'
     end
@@ -85,6 +92,7 @@ class App
 
     @all_person << teacher
     puts 'Person created successfully'
+    write_file(@all_person, './person.json')
   end
 
   # Create a book
@@ -143,6 +151,7 @@ class App
   end
 
   def list_all_rental(all_rentals)
+    return puts "No rental found!" unless File.exist?('rental.json')
     print 'Id of person: '
     person_id = gets.chomp.to_i
 
