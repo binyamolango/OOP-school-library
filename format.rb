@@ -1,5 +1,6 @@
 require './write'
 require './app'
+
 def person_json
   data =
     {
