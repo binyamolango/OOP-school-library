@@ -59,7 +59,7 @@ class App
 
   # list all books
   def list_all_books
-    return puts "No book found!" unless File.exist?('book.json') && !File.empty?('book.json')
+    return puts "No book found!" unless File.exist?('book.json') && !File.size?('book.json').nil?
     data = read_file('book.json')
     data.each do |book|
       puts "Title: \"#{book["title"]}\", Author: #{book["author"]}"
@@ -68,7 +68,7 @@ class App
 
   # list all people
   def list_all_people
-    return puts "No person found!" unless File.exist?('person.json') && !File.empty?('person.json')
+    return puts "No person found!" unless File.exist?('person.json') && !File.size?('person.json').nil?
     data = read_file('person.json')
       data.each do |person|
         if person.is_a?(Teacher)
@@ -195,7 +195,7 @@ class App
   end
 
   def list_all_rental
-    return puts "No rental found!" unless File.exist?('rental.json') && !File.empty?('rental.json')
+    return puts "No rental found!" unless File.exist?('rental.json') && !File.size?('rental.json').nil?
     print 'Id of person: '
     person_id = gets.chomp.to_i
 
