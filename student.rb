@@ -14,7 +14,3 @@ class Student < Person
     '¯\\(ツ)/¯'
   end
 end
-
-s = Student.new(12, 'John Doe', parent_permission: true)
-puts s.age
-puts s.role
