@@ -1,5 +1,6 @@
 require './book'
 require './person'
+require './student'
 describe Book do
   context 'Creating a book' do
     it 'Is a book created?' do
@@ -33,6 +34,18 @@ describe Person do
     it 'a person can use service?' do
       expect(can_use_services?(p)).to eq(true)
       expect(can_use_services?(p2)).to eq(true)
+    end
+  end
+
+  describe Student do
+    context 'Creating a student' do
+      it "Is the student's information correct?" do
+        s = Student.new(21)
+
+        s.name = 'May'
+        expect(s.age).to eq(21)
+        expect(s.name).to eq('May')
+      end
     end
   end
 end
