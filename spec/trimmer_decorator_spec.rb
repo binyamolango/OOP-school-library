@@ -6,10 +6,8 @@ describe TrimmerDecorator do
   trimmed_name = TrimmerDecorator.new(person1)
 
   context 'A trimmed_name object' do
-
     it 'should return a trimmed name when we call correct_name method' do
       expect(trimmed_name.correct_name).to eq 'berekethus'
     end
-
   end
 end
