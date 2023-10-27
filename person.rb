@@ -3,7 +3,7 @@ require './rental'
 
 # Concrete component
 class Person < Nameable
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
   attr_reader :id, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
